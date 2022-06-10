@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.pokeball-background{
+    background-image: url(/src/assets/img/pokeball.png);
+
+    position: fixed;
+    -webkit-filter: brightness(200%);
+            filter: brightness(200%);
+    z-index: -1;
+    right: -90px;
+    top: -40px;
+    background-size: cover;
+    height: 300px;
+    width: 300px;
+    animation-direction: reverse;
+}
+
+@keyframes rotate {from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}}
+.pokeball-background{
+    animation: 3s rotate linear infinite;
+    transform-origin: 50% 50%;
+}
+
+
+/* propiedades principales */
+
+img{
+    border-style: none;
+}
+
+.container{
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.beginning .banner{
+    padding-top:50px;
+    display:flex
+;}
+
+
+
+/* diseño web responsivo  */
+@media(min-width :768px){
+    .container{
+        max-width: 579px;
+    }
+}
+
+/* input page css */
+
+.title{
+    font-size: 2rem;
+    display:inline-block;
+    text-align: right;
+    padding-top: 20px;
+    margin: 0;
+
+}
+
+
+.beginning input{
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    font-size: 19px;
+    color: gray;
+    box-shadow: -10px -10px 15px #3a3a3a17,
+    10px 10px 15px #42424259;
+    transition: .5s;
+    padding: 10px 55px 10px 15px;
+    height: 50px;
+}
+
+
+/* button dark mode */
+
+.dark-mode-container{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    z-index: 100;
+}
+
+.dark-mode-container input[type="checkbox"]{
+    position: relative;
+    -webkit-appearance: none;
+    width: 75px;
+    height: 30px;
+    background: #ffbb00;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    transition: .5s;
+    cursor: pointer;
+}
+
+.dark-mode-container input:checked[type="checkbox"]{
+    background: #03a9f4;
+}
+
+.dark-mode-container input[type="checkbox"]:before{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    top: -1px;
+    left: 0;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    transform: scale(1.1);
+    transition: .5s;
+    
+}
+
+.dark-mode-container input:checked[type="checkbox"]:before{
+    left: 45px;
+}
