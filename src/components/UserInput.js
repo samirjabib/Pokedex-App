@@ -29,7 +29,7 @@ const UserInput = () => {
 
             <div className="banner">
                 <h2 className="title">Hello trainer!</h2>
-                <img src={image.img1} alt="img" onClick={getName}/>
+                <img src={image.img1} alt="img" onClick={getName} className="main-pokemon"/>
             </div>
             
             <p className="">Give me your name to start</p>
