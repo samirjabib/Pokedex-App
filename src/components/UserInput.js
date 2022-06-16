@@ -25,22 +25,19 @@ const UserInput = () => {
 
     
     return (
-        <div className='beginning container'>
 
-            <div className="banner">
-                <h2 className="title">Hello trainer!</h2>
-                <img src={image.img1} alt="img" onClick={getName} className="main-pokemon"/>
+        <div >
+            <div>
+                <h2>Hello trainer!</h2>
+                <img src={image.img1} alt="img" onClick={getName}/>
             </div>
-            
             <p className="">Give me your name to start</p>
-
             <form>
                 <input 
                     onChange={(e) => setUserName(e.target.value)}
                     value={userName}
                 />
             </form>
-
         </div>
     );
 };

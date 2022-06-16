@@ -1,4 +1,4 @@
-import pokemon1 from './img/pokemoninput1.png'
+import pokemon1 from './img/pokemoninput1.gif'
 import pokemon2 from './img/pokemoninput2.png'
 
 

@@ -1,6 +1,5 @@
 import Pokedex from "./components/Pokedex";
-import ProtectedRoutes from "./components/ProtectedRoutes";
-import Settings from "./components/Settings";
+import ProtectedRoutes from "./components/ProtectedRoutes";   
 import UserInput from "./components/UserInput";
 import Pokemon from "./components/Pokemon"
 import { HashRouter, Routes, Route } from 'react-router-dom';
@@ -35,15 +34,10 @@ function App() {
 
   return (
     <ThemeProvider theme={ theme === "ligth" ?  ligthTheme : darkTheme}>
-
       <StyledApp className="App">
         <GlobalStyles/>
         <HashRouter>
-
-          <div className="pokeball-background"></div>
-
-
-          <div className="dark-mode-container">
+          <div>
             <input 
               type="checkbox" 
               defaultChecked={theme}
@@ -52,24 +46,19 @@ function App() {
               />
           </div>
           
-
           <Routes>
+          <Route path="/" element ={<UserInput/>}/>
             {/* usamos el atributo Route para enlazar las pestañas */}
-            <Route path="/" element ={<UserInput/>}/>
+            
             {/* Rutas Protegidas usando el Atributo Route con apertura y cierre
                 usamos en element el enlace hacia el cual haremos la funcion */}
             <Route element={<ProtectedRoutes/>}>
               <Route path="/pokedex" element={<Pokedex/>}/>
-              <Route path="/pokedex/:id" element={<Pokemon/>}/>
-              <Route path="/settings" element={<Settings/>}/>
+              <Route path="/pokedex/:id" element={<Pokemon/>}/>x
             </Route>
-
           </Routes>
-
         </HashRouter>
-
       </StyledApp>
-
     </ThemeProvider>
   );
 }
