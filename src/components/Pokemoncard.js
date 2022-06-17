@@ -10,19 +10,18 @@ const Pokemoncard = ({pokemon}) => {
 
     const [pokemonData,setPokemonData] = useState({})
 
-    const pokemonUrl = pokemon.url
+    // const pokemonUrl = pokemon.url
 
     useEffect(() =>{
-            axios.get(pokemonUrl)
+            axios.get(pokemon)
                 .then(res => setPokemonData(res.data))
     })
-
     
     return (
 
         <div onClick={()=> navigate(`/pokedex/${pokemonData.id}`)}>
             <span className="card-id">{pokemonData?.id}</span>
-            <h2>{pokemon.name}</h2>
+            <h2>{pokemonData.name}</h2>
             <img src={pokemonData?.sprites?.front_default} alt="pokemon-card"/>
             {/* <img src={}/> */}
         </div>

@@ -32,7 +32,7 @@ const Pokedex = () => {
 
     const filterType = (e) =>{
         axios.get(e.target.value)
-            .then( res => console.log(res.data.pokemon))
+            .then( res => setPokemons(res.data.pokemon))
     }
 
     
@@ -50,7 +50,6 @@ const Pokedex = () => {
         }
     }
 
-   
     //buscador por tipo
 
     const [types,setTypes] = useState([])
@@ -122,8 +121,8 @@ const Pokedex = () => {
                         pokemonPaginated.map( pokemon => (
                             
                             <Pokemoncard 
-                            pokemon={pokemon} 
-                            key={pokemon.url} />
+                            pokemon={pokemon.url !== undefined ? pokemon.url : pokemon.pokemon.url} 
+                            key={pokemon.url !== undefined ? pokemon.url : pokemon.pokemon.url} />
                             
                             
                         ))

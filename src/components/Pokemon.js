@@ -22,7 +22,7 @@ const Pokemon = () => {
     navigate(-1)    
 }   
 
-
+    console.log(pokemon)
 
     return (
         <div>
@@ -49,7 +49,7 @@ const Pokemon = () => {
                 }
                 {
                     pokemon.stats?.map(stat => (
-                        <li>
+                        <li key ={stat.stat.url}>
                             <label htmlFor='pokebar'>{stat.stat.name}</label>
                             <progress id='pokebar' max="100" value={stat.base_stat}>{stat.base_stat}</progress>
                         </li>
