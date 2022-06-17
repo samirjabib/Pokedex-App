@@ -22,8 +22,6 @@ const Pokemon = () => {
     navigate(-1)    
 }   
 
-    console.log(pokemon)
-
 
 
     return (

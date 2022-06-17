@@ -28,8 +28,14 @@ const Pokedex = () => {
             .then(res=> setTypes(res.data.results))
     },[])
 
-    
 
+
+    const filterType = (e) =>{
+        axios.get(e.target.value)
+            .then( res => console.log(res.data.pokemon))
+    }
+
+    
 
     //Buscador por nombre
 
@@ -44,11 +50,11 @@ const Pokedex = () => {
         }
     }
 
+   
+    //buscador por tipo
 
-    //buscador por tipo 
+    const [types,setTypes] = useState([])
 
-
-    const [types,setTypes] = useState([])   
 
     //paginacion
     const [page,setPage] =useState(1)
@@ -64,8 +70,7 @@ const Pokedex = () => {
     const lastPage = Math.ceil(pokemons.length/limitPokemons)
     const firstPage =1;
 
-    console.log(types)
-    
+
     return (
         <div>
             {/* boton desloggear */}
@@ -80,16 +85,34 @@ const Pokedex = () => {
                 welcome {user}, her you can find you favorite pokemon
             </p>
 
-            <button className='btn-ball' onClick={search}>
-                            <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <input
-                type="text"
-                placeholder='search pokemon by name'
-                value={searchPokemons}
-                onChange={(e) => setSearchPokemon(e.target.value.toLowerCase())}
-                
-            />
+
+            {/* buscador por nombre */}
+            <div>
+                <button className='btn-ball' onClick={search}>
+                                <i className="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <input
+                    type="text"
+                    placeholder='search pokemon by name'
+                    value={searchPokemons}
+                    onChange={(e) => setSearchPokemon(e.target.value.toLowerCase())}
+                    
+                />
+            </div>
+            
+
+
+            {/* buscador por tipo  */} 
+            <select onChange={filterType}>
+                {
+                    types.map(type => (
+                        <option key={type.url} value={type.url}>
+                            {type.name}
+                        </option>
+                    ))
+                }
+            </select>
+
 
             <div>
                 {/* pokemon-box */}
@@ -100,7 +123,7 @@ const Pokedex = () => {
                             
                             <Pokemoncard 
                             pokemon={pokemon} 
-                            key={pokemon.url}/>
+                            key={pokemon.url} />
                             
                             
                         ))
@@ -113,7 +136,7 @@ const Pokedex = () => {
             onClick={() =>setPage(page-1)}
             disabled ={page === firstPage}>
                 Preview
-            </button>
+            </button> 
             <button 
             onClick={() =>setPage(page+1)}
             disabled ={page === lastPage}>
